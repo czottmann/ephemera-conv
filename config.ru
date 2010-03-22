@@ -4,7 +4,14 @@ AppEngine::Rack.configure_app(
   :version => 2
 )
 
-require "mobi"
+require "mobipocket"
 require "epub"
+
+get "/" do
+  "ephemera-conv. Yeeeeah, baby."
+end
+
+CACHE = AppEngine::Memcache.new
+CACHE_TIME = 300 # sec
 
 run Sinatra::Application

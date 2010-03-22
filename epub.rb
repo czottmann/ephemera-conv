@@ -1,6 +1,6 @@
-require 'sinatra'
-require 'dm-core'
+require "sinatra"
+require "dm-core"
 
-get '/epub/' do
+get "/epub" do
   "epub"
 end
