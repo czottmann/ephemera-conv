@@ -1,7 +1,6 @@
 require "sinatra"
 require "dm-core"
 require "mobi"
-require "appengine-apis/memcache"
 
 
 helpers do
@@ -13,8 +12,8 @@ helpers do
   
   
   def send_book(book)
-    content_type 'application/octet-stream'
-    response['Content-Disposition'] = 'inline'
+    content_type "application/octet-stream"
+    response['Content-Disposition'] = "inline"
     halt book
   end
   
@@ -22,10 +21,6 @@ end
 
 
 get "/mobi" do
-  CACHE.set("lol", "omg", 3)
-  # puts request.env['REMOTE_ADDR'].inspect
-  STDERR.puts mc.get("lol")
-  
   "mobi"
 end
 
@@ -41,11 +36,12 @@ post "/mobi" do
   end
 
   key = [ request.env['REMOTE_ADDR'], name ].join("-")
+  
   if book = CACHE.get(key)
-    STDERR.puts "Cached request! FILE: #{name.inspect}; SITE: #{site}; TITLE: #{title}."
+    LOGGER.info("Cached request! FILE: #{name.inspect}; SITE: #{site}; TITLE: #{title}.")
     send_book(book)
   else
-    STDERR.puts "New request! FILE: #{name.inspect}; SITE: #{site}; TITLE: #{title}."
+    LOGGER.info("New request! FILE: #{name.inspect}; SITE: #{site}; TITLE: #{title}.")
 
     while html = tmpfile.read(65536)
       mobi = Mobi.new
@@ -53,7 +49,7 @@ post "/mobi" do
       mobi.name = title
       mobi.title = title
 
-      mobi.header.type = "NEWS" # "HTML"
+      mobi.header.type = "NEWS"
       mobi.header.encoding = "UTF-8"
       mobi.header.extended_headers << new_exth( 100, site )
       mobi.header.extended_headers.each {|eh| mobi.header.exth_length += eh.length }
@@ -69,31 +65,3 @@ post "/mobi" do
     end
   end
 end
-
-
-
-
-
-=begin
-
-tmp_file = "_test/szde.html"
-mobi_file = "_test/test.mobi"
-
-
-mobi = Mobi.new
-mobi.content = File.read(tmp_file)
-mobi.name = "Politik kompakt: \"Afghanistan-Konflikt nicht zu gewinnen\""
-mobi.title = mobi.name
-
-mobi.header.type = "NEWS" # "HTML"
-mobi.header.encoding = "UTF-8"
-mobi.header.extended_headers << new_exth( 100, "sueddeutsche.de" )
-mobi.header.extended_headers.each do |eh|
-  mobi.header.exth_length += eh.length
-end
-
-mobi.header.exth_count = mobi.header.extended_headers.size
-
-mobi.write_file(mobi_file)
-
-=end
