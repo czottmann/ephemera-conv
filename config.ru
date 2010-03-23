@@ -6,7 +6,7 @@ require "epub"
 
 AppEngine::Rack.configure_app(
   :application => "ephemera-conv",
-  :version => 5
+  :version => 1
 )
 
 
