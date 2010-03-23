@@ -5,6 +5,17 @@
 This is the HTML-to-MOBI conversion backend of [Ephemera for Mac](http://goephemera.com/). It makes use of [Kindler](), is a [Sinatra]() app sitting on top of [appengine-jruby](http://code.google.com/p/appengine-jruby/) and runs on [Google AppEngine](https://appengine.google.com/).
 
 
+## Usage
+
+Hit `/mobi` with a `POST` request, passing the following parameters:
+
+* `site`: a string containing the author/site
+* `title`: a string containing the title of the story
+* `file`: the HTML file to convert
+
+The app will/should return a binary blob -- the MOBI file.
+
+
 ## Dependencies / Requirements
 
 * An [Google AppEngine](https://appengine.google.com/) account
