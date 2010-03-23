@@ -1,8 +1,15 @@
 # ephemera-conv
 
+This project's home is at http://github.com/carlo/ephemera-conv
+
+
 ## Description
 
-This is the HTML-to-MOBI conversion backend of [Ephemera for Mac](http://goephemera.com/). It makes use of [Kindler](), is a [Sinatra]() app sitting on top of [appengine-jruby](http://code.google.com/p/appengine-jruby/) and runs on [Google AppEngine](https://appengine.google.com/).
+This is the HTML-to-MOBI conversion backend of [Ephemera for
+Mac](http://goephemera.com/). It makes use of [Kindler](), is a [Sinatra]()
+app sitting on top of
+[appengine-jruby](http://code.google.com/p/appengine-jruby/) and runs on
+[Google AppEngine](https://appengine.google.com/).
 
 
 ## Usage
@@ -24,8 +31,14 @@ The app will/should return a binary blob -- the MOBI file.
 
 ## Acknowledgements
 
-Give it up for [Josh](http://github.com/josh) and his hunkydory [Kindler](http://github.com/josh/kindler) gem!
+Thanks to [Josh](http://github.com/josh) for his hunkydory
+[Kindler](http://github.com/josh/kindler) gem.
 
+
+## Author
+
+Carlo Zottmann, carlo@municode.de, http://github.com/carlo. This project's
+home is at http://github.com/carlo/ephemera-conv.
 
 ## License
 
