@@ -1,0 +1,21 @@
+# ephemera-conv
+
+## Description
+
+This is the HTML-to-MOBI conversion backend of [Ephemera for Mac](http://goephemera.com/). It makes use of [Kindler](), is a [Sinatra]() app sitting on top of [appengine-jruby](http://code.google.com/p/appengine-jruby/) and runs on [Google AppEngine](https://appengine.google.com/).
+
+
+## Dependencies / Requirements
+
+* An [Google AppEngine](https://appengine.google.com/) account
+* [appengine-jruby](http://code.google.com/p/appengine-jruby/)
+
+
+## Acknowledgements
+
+Give it up for [Josh](http://github.com/josh) and his hunkydory [Kindler](http://github.com/josh/kindler) gem!
+
+
+## License
+
+MIT licensed. See the file `LICENSE.txt`.
